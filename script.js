@@ -61,19 +61,88 @@ function cursorEffect() {
 }
 cursorEffect();
 
-function page2animation() {
-  gsap.from(".page-header-content p, .elem h1", {
-    y: 120,
-    stagger: 0.2,
-    duration: 1,
-    scrollTrigger: {
-      trigger: "#page2",
-      scroller: "#main",
-      end: "top 46%",
-      start: "top 47%",
-      scrub: 2,
-      // markers: true,
+//slide effect
+function swiperjs() {
+  var swiper = new Swiper(".mySwiper", {
+    slidesPerView: 1,
+    spaceBetween: 30,
+    loop: true,
+    autoplay: {
+      delay: 0,
+      disableOnInteraction: true,
     },
+    speed: 60000, // Increase speed for smoother transition
+    easing: "cubic-bezier(0.42, 0, 0.58, 1)",
   });
 }
-page2animation();
+swiperjs();
+
+
+var tl = gsap.timeline();
+
+tl.from("#loader h3", {
+  x: 40,
+  opacity: 0,
+  duration: 1,
+  stagger: 0.1,
+});
+
+tl.to("#loader h3", {
+  x: -20,
+  duration: 1,
+  opacity: 0,
+});
+
+tl.to("#loader", {
+  opacity: 0,
+  display: "none",
+});
+
+tl.from("#page1-content h1 span", {
+  y: 100,
+  opacity: 0,
+  stagger: 0.1,
+  delay: -0.7,
+});
+
+//text up in page2
+ tl.from(".page-header-content p, .page-para p", {
+   y: 120,
+   stagger: 0.1,
+   duration: 1,
+   scrollTrigger: {
+     trigger: "#page2",
+     scroller: "#main",
+     end: "top 46%",
+     start: "top 47%",
+     scrub: 2,
+     // markers: true,
+   },
+ });
+
+//rotate ring of blue ball
+  tl.to("#blue-ball svg", {
+    duration: 3,
+    rotate: 250,
+    scrollTrigger: {
+      trigger: "#page4",
+      scroller: "#main",
+      end: "top 0%",
+      start: "top 80%",
+      scrub: 6,
+    },
+  });
+
+//text up effect in page3
+tl.from("#page3-top h2 span", {
+  y: 120,
+  stagger: 0.1,
+  duration: 0.5,
+  scrollTrigger: {
+    trigger: "#page3",
+    scroller: "#main",
+    end: "top 55%",
+    start: "top 60%",
+    scrub: 2,
+  },
+});
