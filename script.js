@@ -36,7 +36,7 @@ ScrollTrigger.addEventListener("refresh", () => locoScroll.update());
 // after everything is set up, refresh() ScrollTrigger and update LocomotiveScroll because padding may have been added for pinning, etc.
 ScrollTrigger.refresh();
 
-function cursorEffect() {
+function redCursorEffect() {
   var page1Content = document.querySelector("#page1-content");
   var cursor = document.querySelector("#cursor");
   page1Content.addEventListener("mousemove", (dets) => {
@@ -59,7 +59,7 @@ function cursorEffect() {
     });
   });
 }
-cursorEffect();
+redCursorEffect();
 
 //slide effect
 function swiperjs() {
@@ -76,7 +76,6 @@ function swiperjs() {
   });
 }
 swiperjs();
-
 
 var tl = gsap.timeline();
 
@@ -106,32 +105,96 @@ tl.from("#page1-content h1 span", {
 });
 
 //text up in page2
- tl.from(".page-header-content p, .page-para p", {
-   y: 120,
-   stagger: 0.1,
-   duration: 1,
-   scrollTrigger: {
-     trigger: "#page2",
-     scroller: "#main",
-     end: "top 46%",
-     start: "top 47%",
-     scrub: 2,
-     // markers: true,
-   },
- });
+tl.from("#page2-elems .page-header-content p,#page2-elems .page-para p", {
+  y: 120,
+  stagger: 0.1,
+  duration: 1,
+  scrollTrigger: {
+    trigger: "#page2-elems",
+    scroller: "#main",
+    end: "top 50%",
+    start: "top 55%",
+    scrub: 2,
+    // markers: true,
+  },
+});
 
-//rotate ring of blue ball
-  tl.to("#blue-ball svg", {
-    duration: 3,
-    rotate: 250,
+//text up in page4 top
+tl.from(
+  "#page4-elems-top .page-header-content p ,#page4-elems-top .page-para p",
+  {
+    y: 120,
+    stagger: 0.1,
+    duration: 1,
     scrollTrigger: {
-      trigger: "#page4",
+      trigger: "#page4-elems-top",
       scroller: "#main",
-      end: "top 0%",
-      start: "top 80%",
-      scrub: 6,
+      end: "top 50%",
+      start: "top 55%",
+      scrub: 2,
+      // markers: true,
     },
+  }
+);
+//black cursor effect
+function blackCursorEffect() {
+  var blueBallContainer = document.querySelector("#blue-ball");
+  var cursor = document.querySelector("#cursor-black");
+  blueBallContainer.addEventListener("mousemove", (dets) => {
+    gsap.to(cursor, {
+      top: dets.y,
+      left: dets.x,
+    });
+    console.log(`x:${dets.x}, y:${dets.y}`)
   });
+
+  blueBallContainer.addEventListener("mouseenter", () => {
+    gsap.to(cursor, {
+      scale: 1,
+      opacity: 1,
+    });
+  });
+  blueBallContainer.addEventListener("mouseleave", () => {
+    gsap.to(cursor, {
+      scale: 0,
+      opacity: 0,
+    });
+  });
+}
+blackCursorEffect();
+//rotate ring of blue ball
+tl.to("#blue-ball svg", {
+  duration: 3,
+  rotate: 250,
+  scrollTrigger: {
+    trigger: "#blue-ball",
+    scroller: "#main",
+    end: "top 0%",
+    start: "top 70%",
+    scrub: 6,
+  },
+  markers:true
+});
+
+//text up in page4 bottom
+tl.from(
+  "#page4-elems-bottom .page-header-content p ,#page4-elems-bottom .page-para p",
+  {
+    y: 120,
+    stagger: 0.1,
+    duration: 1,
+    scrollTrigger: {
+      trigger: "#page4-elems-bottom",
+      scroller: "#main",
+      end: "top 50%",
+      start: "top 55%",
+      scrub: 2,
+      // markers: true,
+    },
+  }
+);
+
+
 
 //text up effect in page3
 tl.from("#page3-top h2 span", {
@@ -143,6 +206,51 @@ tl.from("#page3-top h2 span", {
     scroller: "#main",
     end: "top 55%",
     start: "top 60%",
+    scrub: 2,
+  },
+});
+
+//text up effect in page5 bottom 
+tl.from("#page5-bottom h1 span", {
+  y: 120,
+  duration: 0.5,
+  scrollTrigger: {
+    trigger: "#page5-bottom",
+    scroller: "#main",
+    end: "top 55%",
+    start: "top 60%",
+    scrub: 2,
+  },
+});
+
+//page6 effects
+tl.from("#page6-top, #page6-middle", {
+  y: -150,
+  duration: 0.5,
+  delay: 1,
+  opacity: 0,
+  scrollTrigger: {
+    trigger: "#page6",
+    scroller: "#main",
+    end: "top 55%",
+    start: "top 80%",
+    scrub: 2,
+    
+  }
+});
+
+//rejouice text effect
+tl.from("#page6-bottom h1 span", {
+  y: -400,
+  duration: 1,
+  opacity: 0.6,
+  stagger: 0.02,
+  delay:-1,
+  scrollTrigger: {
+    trigger: "#page6-bottom h1",
+    scroller: "#main",
+    end: "top 52%",
+    start: "top 85%",
     scrub: 2,
   },
 });
