@@ -96,6 +96,14 @@ tl.to("#loader", {
   opacity: 0,
   display: "none",
 });
+tl.from("nav", {
+  y: -60,
+  opacity: 0,
+  duration: 0.5,
+  delay: 0.2,
+  stagger:0.2,
+})
+
 
 tl.from("#page1-content h1 span", {
   y: 100,
@@ -169,11 +177,26 @@ tl.to("#blue-ball svg", {
   scrollTrigger: {
     trigger: "#blue-ball",
     scroller: "#main",
-    end: "top 0%",
-    start: "top 70%",
+    end: "top 40%",
+    start: "top 55%",
     scrub: 6,
   },
-  markers:true
+  // markers: true,
+});
+
+//text effect in blue ball
+tl.to("#numbers span", {
+  y: -310,
+  duration: 2,
+  stagger: 0.5,
+  scrollTrigger: {
+    trigger: "#numbers",
+    scroller: "#main",
+    end: "top 50%",
+    start: "top 65%",
+    // markers: true,
+    scrub:2,
+  },
 });
 
 //text up in page4 bottom

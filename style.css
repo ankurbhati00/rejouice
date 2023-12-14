@@ -227,10 +227,47 @@ nav h4 {
   justify-content: center;
   align-items: center;
   transform: translate(-50%, -50%);
+  top:15%;
+  left:15%;
 }
 #cursor-black h5 {
   font-size: 1.15vw;
   font-weight: 500;
+}
+#seats {
+  display: flex;
+  position: absolute;
+  inset: 0;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  font-family: nb;
+  color: white;
+}
+#seats h1 {
+  font-size: 5vw;
+  font-weight: 500;
+  display: flex;
+  height: 5vw;
+  overflow: hidden;
+  line-height: 5vw;
+
+}
+#seats h4{
+  font-weight: 100;
+}
+#numbers{
+  display: flex;
+  font-size: 3.7vw;
+  flex-direction: column;
+  /* position: fixed; */
+  padding-right: 10px;
+  padding-top: 8px;
+
+}
+#numbers span{
+  padding-bottom: -10px;
+  text-decoration: underline;
 }
 #blue-ball video {
   height: 100%;
@@ -240,9 +277,7 @@ nav h4 {
   position: absolute;
   height: 60%;
 }
-/* #blue-ball svg:nth-child(3){
-    transform: rotate(123deg);
-} */
+
 #page5 {
   height: 150vh;
   width: 100%;
